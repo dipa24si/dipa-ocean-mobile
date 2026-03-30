@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  background: linear-gradient(to bottom, #001f3f, #0077b6);
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+/* POSTER */
+.poster {
+  width: 360px;
+  margin: 60px auto;
+  padding: 25px;
+  background: linear-gradient(to bottom, #0096c7, #023e8a);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 150, 199, 0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+/* EFEK GELOMBANG */
+.poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/wavecut.png");
+  opacity: 0.2;
+}
+
+/* JUDUL */
+.poster h1 {
+  font-size: 32px;
+  margin: 0;
+  color: #caf0f8;
+  letter-spacing: 2px;
+}
+
+/* SUBTITLE */
+.sub {
+  color: #90e0ef;
+  margin-bottom: 10px;
+}
+
+/* FOTO */
+.poster img {
+  width: 200px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid #90e0ef;
+  margin: 20px 0;
+}
+
+/* BIODATA */
+.biodata {
+  font-size: 16px;
+}
+
+.biodata div {
+  margin: 8px 0;
+  border-bottom: 1px dashed #90e0ef;
+  padding-bottom: 4px;
+}
+
+/* FOOTER / STATUS */
+.reward {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #caf0f8;
+  font-weight: bold;
+}
+
+/* HOVER EFFECT */
+.poster:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+  box-shadow: 0 10px 40px rgba(0, 150, 199, 0.9);
+}
+
+/* CONTAINER BUBBLE */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* BUBBLE */
+.bubbles span {
+  position: absolute;
+  bottom: -50px;
+  width: 15px;
+  height: 15px;
+  background: rgba(173, 216, 230, 0.6);
+  border-radius: 50%;
+  animation: rise 10s infinite ease-in;
+}
+
+.bubbles span:nth-child(2) { width: 20px; height: 20px; }
+.bubbles span:nth-child(4) { width: 10px; height: 10px; }
+.bubbles span:nth-child(6) { width: 18px; height: 18px; }
+
+/* ANIMASI NAIK */
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-600px) scale(1.2);
+    opacity: 0;
+  }
+}
