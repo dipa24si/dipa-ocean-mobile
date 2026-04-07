@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Figma Inspired Palette: Deep Ocean -->
+    <color name="primaryColor">#005B96</color>
+    <color name="primaryDarkColor">#03396C</color>
+    <color name="primaryLightColor">#B3CDE0</color>
+    <color name="accentColor">#6497B1</color>
+    <color name="backgroundColor">#F0F4F8</color>
+
+    <color name="textPrimary">#011F4B</color>
+    <color name="textSecondary">#6497B1</color>
+    <color name="inputStroke">#B3CDE0</color>
 </resources>
