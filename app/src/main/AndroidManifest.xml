@@ -12,21 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dipaocean">
 
-        <!-- ❌ KODE LAMA (MainActivity) -->
-        <!--
+        <!-- LOGIN JADI HALAMAN AWAL -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
-
-        <!-- ✅ LOGIN JADI HALAMAN AWAL -->
-        <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".Pertemuan_4.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,8 +22,10 @@
             </intent-filter>
         </activity>
 
-        <!-- ✅ HALAMAN SETELAH LOGIN -->
-        <activity android:name=".ui.welcome.WelcomeActivity" />
+        <activity android:name=".Pertemuan_4.welcome.WelcomeActivity" />
+        <activity android:name=".Pertemuan_4.main.MainActivity" />
+        <activity android:name=".Pertemuan_4.rumus.RumusActivity" />
+        <activity android:name=".Pertemuan_4.common.DetailActivity" />
 
     </application>
 

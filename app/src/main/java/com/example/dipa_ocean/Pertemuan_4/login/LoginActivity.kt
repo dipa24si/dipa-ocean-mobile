@@ -1,11 +1,11 @@
-package com.example.dipa_ocean.ui.login
+package com.example.dipa_ocean.Pertemuan_4.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dipa_ocean.databinding.ActivityLoginBinding
-import com.example.dipa_ocean.ui.welcome.WelcomeActivity
+import com.example.dipa_ocean.Pertemuan_4.welcome.WelcomeActivity
 
 class LoginActivity : AppCompatActivity() {
 
