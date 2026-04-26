@@ -1,11 +1,13 @@
-package com.example.dipa_ocean.Pertemuan_4.login
+package com.example.dipa_ocean.Pertemuan_6.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dipa_ocean.databinding.ActivityLoginBinding
-import com.example.dipa_ocean.Pertemuan_4.welcome.WelcomeActivity
+import com.example.dipa_ocean.Pertemuan_6.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -16,6 +18,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
+
         binding.btnLogin.setOnClickListener {
             val username = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
@@ -25,15 +29,29 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Harap isi username dan password", Toast.LENGTH_SHORT).show()
                 }
                 username == password -> {
-                    val intent = Intent(this, WelcomeActivity::class.java)
+                    // Simpan status login di SharedPreferences
+                    val editor = sharedPref.edit()
+                    editor.putBoolean("isLogin", true)
+                    editor.putString("username", username)
+                    editor.apply()
+
+                    val intent = Intent(this, MainActivity::class.java)
                     intent.putExtra("EXTRA_NAME", username)
                     startActivity(intent)
                     finish()
                 }
                 else -> {
-                    Toast.makeText(this, "Login Gagal: Username dan password harus sama!", Toast.LENGTH_SHORT).show()
+                    showErrorDialog()
                 }
             }
         }
+    }
+
+    private fun showErrorDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Login Gagal")
+            .setMessage("Username dan password harus sama!")
+            .setPositiveButton("Coba Lagi", null)
+            .show()
     }
 }

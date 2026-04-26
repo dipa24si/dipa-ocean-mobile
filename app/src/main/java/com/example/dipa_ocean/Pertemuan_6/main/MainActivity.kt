@@ -1,11 +1,12 @@
-package com.example.dipa_ocean.Pertemuan_4.main
+package com.example.dipa_ocean.Pertemuan_6.main
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dipa_ocean.databinding.ActivityMainBinding
-import com.example.dipa_ocean.Pertemuan_4.login.LoginActivity
+import com.example.dipa_ocean.Pertemuan_6.login.LoginActivity
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +18,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tombol WebView
+        // Set Toolbar
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "Dashboard Bina Desa"
+
+        // Tombol WebView - Menggunakan WebViewActivity yang sudah dipindah ke package Pertemuan_6
         binding.btnCustom1.setOnClickListener {
-            // Implementasi navigasi webview
+            val intent = Intent(this, WebViewActivity::class.java)
+            startActivity(intent)
         }
 
         binding.btnLogout.setOnClickListener {
@@ -28,10 +34,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLogoutDialog() {
+        val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         AlertDialog.Builder(this)
             .setTitle("Konfirmasi Logout")
-            .setMessage("Apakah Anda yakin ingin keluar?")
+            .setMessage("Apakah Anda yakin ingin keluar dari Bina Desa?")
             .setPositiveButton("Ya") { _, _ ->
+                val editor = sharedPref.edit()
+                editor.clear()
+                editor.apply()
+
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

@@ -3,14 +3,17 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Figma Inspired Palette: Deep Ocean -->
-    <color name="primaryColor">#005B96</color>
-    <color name="primaryDarkColor">#03396C</color>
-    <color name="primaryLightColor">#B3CDE0</color>
-    <color name="accentColor">#6497B1</color>
-    <color name="backgroundColor">#F0F4F8</color>
+    <!-- Bina Desa UMKM Inspired Palette -->
+    <color name="primaryColor">#0D1B2A</color> <!-- Dark Navy dari Footer/Header -->
+    <color name="primaryDarkColor">#000000</color>
+    <color name="primaryLightColor">#1B263B</color>
+    <color name="accentColor">#F39C12</color> <!-- Orange/Gold dari tombol -->
+    <color name="backgroundColor">#FFFFFF</color> <!-- Putih Bersih -->
 
-    <color name="textPrimary">#011F4B</color>
-    <color name="textSecondary">#6497B1</color>
-    <color name="inputStroke">#B3CDE0</color>
+    <color name="textPrimary">#0D1B2A</color>
+    <color name="textSecondary">#415A77</color>
+    <color name="inputStroke">#778DA9</color>
+
+    <!-- Warna khusus tombol dari web -->
+    <color name="webOrange">#F39C12</color>
 </resources>

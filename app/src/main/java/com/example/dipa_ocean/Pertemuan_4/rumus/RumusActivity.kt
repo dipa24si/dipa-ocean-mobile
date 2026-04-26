@@ -14,6 +14,11 @@ class RumusActivity : AppCompatActivity() {
         binding = ActivityRumusBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Setup Toolbar
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
         val title = intent.getStringExtra("EXTRA_TITLE") ?: "Rumus Bangun"
         binding.tvRumusTitle.text = title
 
@@ -53,7 +58,7 @@ class RumusActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnBack.setOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             finish()
         }
     }

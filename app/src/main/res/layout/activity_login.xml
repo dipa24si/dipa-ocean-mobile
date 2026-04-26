@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     android:background="@color/backgroundColor"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".Pertemuan_6.login.LoginActivity">
 
     <ImageView
         android:id="@+id/ivLogo"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Dipa Ocean"
+        android:text="UMKM Bina Desa"
         android:textColor="@color/primaryDarkColor"
         android:textSize="32sp"
         android:fontFamily="@font/latoblack"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Experience the depth of possibilities."
+        android:text="Dukung Produk Lokal Indonesia"
         android:textColor="@color/textSecondary"
         android:textSize="16sp"
         android:fontFamily="@font/latoblack"
