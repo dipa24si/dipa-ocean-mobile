@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dipa_ocean.databinding.ActivityLoginBinding
-import com.example.dipa_ocean.Pertemuan_6.main.MainActivity
+import com.example.dipa_ocean.Pertemuan_7.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 

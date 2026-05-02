@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.dipa_ocean.databinding.ActivitySplashScreenBinding
 import com.example.dipa_ocean.Pertemuan_6.login.LoginActivity
-import com.example.dipa_ocean.Pertemuan_6.main.MainActivity
+import com.example.dipa_ocean.Pertemuan_7.main.MainActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

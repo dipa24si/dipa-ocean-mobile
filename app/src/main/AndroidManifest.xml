@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Dipaocean"
         android:usesCleartextTraffic="true">
 
-        <!-- SPLASH SCREEN JADI HALAMAN AWAL (Pertemuan 6) -->
+        <!-- SPLASH SCREEN JADI HALAMAN AWAL -->
         <activity
             android:name=".Pertemuan_6.splash.SplashScreenActivity"
             android:exported="true">
@@ -26,8 +26,10 @@
         </activity>
 
         <activity android:name=".Pertemuan_6.login.LoginActivity" />
+        <activity android:name=".Pertemuan_7.main.MainActivity" />
         <activity android:name=".Pertemuan_6.main.MainActivity" />
         <activity android:name=".Pertemuan_6.main.WebViewActivity" />
+        <activity android:name=".Pertemuan_4.welcome.WelcomeActivity" />
 
     </application>
 

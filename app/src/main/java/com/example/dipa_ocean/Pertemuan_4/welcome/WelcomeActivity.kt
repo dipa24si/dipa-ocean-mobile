@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dipa_ocean.databinding.ActivityWelcomeBinding
-import com.example.dipa_ocean.Pertemuan_4.main.MainActivity
+import com.example.dipa_ocean.Pertemuan_7.main.MainActivity
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -20,6 +20,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding.tvWelcomeName.text = name
 
         binding.root.postDelayed({
+            // Berpindah ke MainActivity Pertemuan 7 (yang ada Bottom Navigation)
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("EXTRA_NAME", name)
             startActivity(intent)
