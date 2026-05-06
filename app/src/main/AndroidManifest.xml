@@ -26,6 +26,7 @@
         </activity>
 
         <activity android:name=".Pertemuan_6.login.LoginActivity" />
+        <activity android:name=".Pertemuan_6.login.RegisterActivity" />
         <activity android:name=".Pertemuan_7.main.MainActivity" />
         <activity android:name=".Pertemuan_6.main.MainActivity" />
         <activity android:name=".Pertemuan_6.main.WebViewActivity" />

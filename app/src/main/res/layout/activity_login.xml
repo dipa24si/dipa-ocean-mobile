@@ -98,4 +98,16 @@
         android:fontFamily="@font/latoblack"
         app:layout_constraintTop_toBottomOf="@id/tilPassword" />
 
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Belum punya akun? Daftar di sini"
+        android:textColor="@color/primaryColor"
+        android:fontFamily="@font/latoblack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
