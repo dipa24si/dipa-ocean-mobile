@@ -54,7 +54,6 @@
                 android:textSize="28sp"
                 android:fontFamily="@font/latoblack" />
 
-<<<<<<< HEAD
             <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
@@ -148,8 +147,18 @@
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
+                android:id="@+id/tvRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Belum punya akun? Daftar di sini"
+                android:textColor="@color/primaryColor"
+                android:fontFamily="@font/latoblack" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
                 android:text="© 2024 Bina Desa Ocean"
                 android:textColor="@color/textSecondary"
@@ -160,18 +169,3 @@
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-=======
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Belum punya akun? Daftar di sini"
-        android:textColor="@color/primaryColor"
-        android:fontFamily="@font/latoblack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> 279960158e266760eb982e9e5904294c3a1adcf9
