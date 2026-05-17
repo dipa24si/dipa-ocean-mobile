@@ -4,37 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor">
+    android:background="@drawable/bg_gradient_navy">
 
-    <ImageView
-        android:id="@+id/ivLogoSplash"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:src="@drawable/ic_ocean_logo"
-        app:tint="@color/white"
+    <!-- Background Decoration -->
+    <View
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:background="@drawable/ic_ocean_logo"
+        android:alpha="0.03"
+        android:rotation="-20"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="-100dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Logo Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            app:cardCornerRadius="80dp"
+            app:cardElevation="20dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="@color/white">
+
+            <ImageView
+                android:id="@+id/ivLogoSplash"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="35dp"
+                android:src="@drawable/ic_ocean_logo"
+                app:tint="@color/primaryColor"
+                android:contentDescription="Logo Bina Desa" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/latoblack"
+            android:text="Bina Desa"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:letterSpacing="0.02" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/latoblack"
+            android:text="Pusat Pemberdayaan UMKM"
+            android:textColor="@color/accentColor"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.15" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="48dp"
         android:fontFamily="@font/latoblack"
-        android:text="UMKM Bina Desa"
+        android:text="v1.0.0"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLogoSplash" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Dukung Produk Lokal Indonesia"
-        android:textColor="@color/primaryLightColor"
+        android:alpha="0.4"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

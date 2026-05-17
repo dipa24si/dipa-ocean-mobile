@@ -1,60 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="24dp"
     android:background="@color/backgroundColor">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="160dp"
-        android:layout_height="220dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="8dp"
-        app:strokeWidth="4dp"
-        app:strokeColor="@color/white">
-
-        <ImageView
-            android:id="@+id/ivProfile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/foto_profil" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/tvDevName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dipa Tranggana"
-        android:layout_marginTop="24dp"
-        android:textSize="22sp"
-        android:fontFamily="@font/latoblack"
-        android:textColor="@color/primaryColor" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mahasiswa Sistem Informasi"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Politeknik Caltex Riau"
-        android:textColor="@color/primaryDarkColor"
-        android:layout_marginTop="4dp" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogoutProfile"
-        style="@style/OceanButton"
+    <!-- Header Background menggunakan Gradient agar selaras dengan Home & Login -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginTop="40dp"
-        android:text="Keluar Aplikasi"
-        android:backgroundTint="#D32F2F" />
+        android:layout_height="220dp"
+        android:background="@drawable/bg_gradient_navy" />
 
-</LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="center_horizontal">
+
+            <!-- Profile Picture Card (Circular) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="60dp"
+                app:cardCornerRadius="70dp"
+                app:cardElevation="8dp"
+                app:strokeWidth="4dp"
+                app:strokeColor="@color/white">
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/foto_profil"
+                    android:contentDescription="Foto Profil" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvDevName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dipa Tranggana"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/latoblack"
+                android:textColor="@color/primaryColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mahasiswa Sistem Informasi"
+                android:textColor="@color/textSecondary"
+                android:textSize="16sp" />
+
+            <!-- Info Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#EEEEEE">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_dialog_info"
+                            app:tint="@color/accentColor" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="16dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Instansi"
+                                android:textSize="12sp"
+                                android:textColor="@color/textSecondary" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Politeknik Caltex Riau"
+                                android:textColor="@color/primaryColor"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#EEEEEE"
+                        android:layout_marginVertical="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@android:drawable/ic_menu_send"
+                            app:tint="@color/accentColor" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="16dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Email"
+                                android:textSize="12sp"
+                                android:textColor="@color/textSecondary" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="dipa24si@mahasiswa.pcr.ac.id"
+                                android:textColor="@color/primaryColor"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Tombol Logout tetap di sini (Sesuai Instruksi) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogoutProfile"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:text="Logout"
+                android:backgroundTint="#D32F2F"
+                app:cornerRadius="15dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

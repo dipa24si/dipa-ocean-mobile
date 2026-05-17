@@ -1,17 +1,14 @@
 package com.example.dipa_ocean.Pertemuan_7.home
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.dipa_ocean.databinding.FragmentHomeBinding
-import com.example.dipa_ocean.Pertemuan_6.login.LoginActivity
 import com.example.dipa_ocean.Pertemuan_6.main.WebViewActivity
-import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
 
@@ -30,34 +27,36 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnCustom1.setOnClickListener {
+        binding.btnWeb.setOnClickListener {
             val intent = Intent(requireContext(), WebViewActivity::class.java)
             startActivity(intent)
         }
 
-        binding.btnLogout.setOnClickListener {
-            showLogoutDialog()
+        binding.btnKatalog.setOnClickListener {
+            Toast.makeText(requireContext(), "Membuka Katalog UMKM", Toast.LENGTH_SHORT).show()
         }
-    }
 
-    private fun showLogoutDialog() {
-        val sharedPref = requireContext().getSharedPreferences("user_pref", Context.MODE_PRIVATE)
-        AlertDialog.Builder(requireContext())
-            .setTitle("Konfirmasi Logout")
-            .setMessage("Apakah Anda yakin ingin keluar dari Bina Desa?")
-            .setPositiveButton("Ya") { _, _ ->
-                val editor = sharedPref.edit()
-                editor.clear()
-                editor.apply()
+        binding.btnEvent.setOnClickListener {
+            Toast.makeText(requireContext(), "Membuka Jadwal Event", Toast.LENGTH_SHORT).show()
+        }
 
-                val intent = Intent(requireContext(), LoginActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
+        binding.btnMaps.setOnClickListener {
+            Toast.makeText(requireContext(), "Membuka Lokasi Desa", Toast.LENGTH_SHORT).show()
+        }
+
+        // Chip selection listener
+        binding.cgCategories.setOnCheckedChangeListener { group, checkedId ->
+            if (checkedId != View.NO_ID) {
+                val chipText = when (checkedId) {
+                    group.getChildAt(0).id -> "Filter Kuliner"
+                    group.getChildAt(1).id -> "Filter Kerajinan"
+                    group.getChildAt(2).id -> "Filter Jasa"
+                    group.getChildAt(3).id -> "Filter Wisata"
+                    else -> "Filter"
+                }
+                Toast.makeText(requireContext(), chipText, Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Tidak") { _, _ ->
-                Snackbar.make(binding.root, "Logout dibatalkan", Snackbar.LENGTH_SHORT).show()
-            }
-            .show()
+        }
     }
 
     override fun onDestroyView() {

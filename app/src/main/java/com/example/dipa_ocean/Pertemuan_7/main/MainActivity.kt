@@ -8,6 +8,7 @@ import com.example.dipa_ocean.databinding.ActivityMainNavBinding
 import com.example.dipa_ocean.Pertemuan_7.home.HomeFragment
 import com.example.dipa_ocean.Pertemuan_7.about.AboutFragment
 import com.example.dipa_ocean.Pertemuan_7.profile.ProfileFragment
+import com.example.dipa_ocean.Pertemuan_7.settings.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +20,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Load default fragment
-        loadFragment(HomeFragment())
+        if (savedInstanceState == null) {
+            loadFragment(HomeFragment())
+        }
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -33,6 +36,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.navigation_profile -> {
                     loadFragment(ProfileFragment())
+                    true
+                }
+                R.id.navigation_settings -> {
+                    loadFragment(SettingsFragment())
                     true
                 }
                 else -> false
