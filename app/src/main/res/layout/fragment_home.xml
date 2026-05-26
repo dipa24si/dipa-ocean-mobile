@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Search Area dengan Style yang Lebih Modern -->
+            <!-- Search Area -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilSearch"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -54,76 +54,6 @@
                     android:layout_height="wrap_content"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Kategori Area (ChipGroup) -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="2dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="#EEEEEE">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kategori UMKM"
-                        android:fontFamily="@font/latoblack"
-                        android:textSize="16sp"
-                        android:textColor="@color/primaryColor" />
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/cgCategories"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        app:singleSelection="true">
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Kuliner"
-                            app:chipIcon="@android:drawable/ic_menu_report_image"
-                            app:chipIconVisible="true"
-                            app:chipIconTint="@color/accentColor" />
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Kerajinan"
-                            app:chipIcon="@android:drawable/ic_menu_edit"
-                            app:chipIconVisible="true"
-                            app:chipIconTint="@color/accentColor" />
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jasa"
-                            app:chipIcon="@android:drawable/ic_menu_call"
-                            app:chipIconVisible="true"
-                            app:chipIconTint="@color/accentColor" />
-
-                        <com.google.android.material.chip.Chip
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Wisata"
-                            app:chipIcon="@android:drawable/ic_menu_directions"
-                            app:chipIconVisible="true"
-                            app:chipIconTint="@color/accentColor" />
-                    </com.google.android.material.chip.ChipGroup>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
             <!-- Dashboard Menu Utama (GridLayout) -->
             <TextView
@@ -213,77 +143,53 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Card Event -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnEvent"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@android:drawable/ic_menu_today"
-                            app:tint="@color/accentColor" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="EVENT"
-                            android:fontFamily="@font/latoblack"
-                            android:textColor="@color/primaryColor"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Card Lokasi -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnMaps"
-                    android:layout_width="0dp"
-                    android:layout_height="120dp"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="6dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="3dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@android:drawable/ic_dialog_map"
-                            app:tint="@color/accentColor" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="LOKASI"
-                            android:fontFamily="@font/latoblack"
-                            android:textColor="@color/primaryColor"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
             </GridLayout>
+
+            <!-- Bagian TabLayout & RecyclerView (Tugas Hari Ini) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Produk Unggulan Desa"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/latoblack"
+                android:textColor="@color/primaryColor"
+                android:textSize="18sp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutUmkm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:tabMode="fixed"
+                app:tabIndicatorColor="@color/accentColor"
+                app:tabSelectedTextColor="@color/accentColor"
+                app:tabTextColor="@color/textSecondary">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Semua" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kuliner" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kerajinan" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <!-- RecyclerView untuk menampilkan list UMKM -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUmkm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_umkm" />
 
             <!-- Info Footer -->
             <com.google.android.material.card.MaterialCardView
