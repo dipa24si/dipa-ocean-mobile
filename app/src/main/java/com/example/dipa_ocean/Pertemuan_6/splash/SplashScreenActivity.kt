@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.dipa_ocean.databinding.ActivitySplashScreenBinding
 import com.example.dipa_ocean.Pertemuan_6.login.LoginActivity
 import com.example.dipa_ocean.Pertemuan_7.main.MainActivity
+import com.example.dipa_ocean.Pertemuan_11.onboarding.OnBoardingActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -22,13 +23,26 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("user_pref", Context.MODE_PRIVATE)
         val isLogin = sharedPref.getBoolean("isLogin", false)
+        
+        val onboardingPref = getSharedPreferences("onboarding_pref", Context.MODE_PRIVATE)
+        
+        // PAKSA RESET STATUS ONBOARDING (Wajib menggunakan commit agar langsung tersimpan)
+        onboardingPref.edit().clear().commit()
+        
+        val isOnboardingFinished = onboardingPref.getBoolean("isFinished", false)
 
         lifecycleScope.launch {
             delay(2000)
-            if (isLogin) {
-                startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
-            } else {
-                startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
+            when {
+                !isOnboardingFinished -> {
+                    startActivity(Intent(this@SplashScreenActivity, OnBoardingActivity::class.java))
+                }
+                isLogin -> {
+                    startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
+                }
+                else -> {
+                    startActivity(Intent(this@SplashScreenActivity, LoginActivity::class.java))
+                }
             }
             finish()
         }

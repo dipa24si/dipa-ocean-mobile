@@ -2,22 +2,26 @@ package com.example.dipa_ocean.Pertemuan_7.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
-import android.view. View
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dipa_ocean.databinding.FragmentHomeBinding
 import com.example.dipa_ocean.Pertemuan_6.main.WebViewActivity
+import com.example.dipa_ocean.Pertemuan_11.news.*
 import com.google.android.material.tabs.TabLayout
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    // Menggunakan URL gambar dari picsum.photos agar lebih stabil
     private val allUmkm = listOf(
         Umkm(1, "Kripik Singkong Renyah", "Kuliner", 
             "Kripik singkong asli desa dengan bumbu rempah pilihan.",
@@ -50,6 +54,12 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView(allUmkm)
         setupTabLayout()
+        
+        // Langsung tampilkan berita cadangan agar tidak kosong
+        showFallbackNews()
+        
+        // Coba ambil dari internet
+        getNews()
 
         binding.btnWeb.setOnClickListener {
             val intent = Intent(requireContext(), WebViewActivity::class.java)
@@ -58,6 +68,49 @@ class HomeFragment : Fragment() {
 
         binding.btnKatalog.setOnClickListener {
             Toast.makeText(requireContext(), "Membuka Katalog UMKM", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun getNews() {
+        binding.progressBar.visibility = View.VISIBLE
+        val client = ApiConfig.getApiService().getNews()
+        client.enqueue(object : Callback<NewsResponse> {
+            override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
+                if (isAdded) {
+                    binding.progressBar.visibility = View.GONE
+                    if (response.isSuccessful) {
+                        val posts = response.body()?.data
+                        if (!posts.isNullOrEmpty()) {
+                            setNewsData(posts)
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
+                if (isAdded) {
+                    binding.progressBar.visibility = View.GONE
+                    Log.e("HomeFragment", "API Failure: ${t.message}")
+                }
+            }
+        })
+    }
+
+    private fun showFallbackNews() {
+        val mockData = listOf(
+            NewsPost("UMKM Desa Tembus Pasar Ekspor", null, null, "2024-05-20", NewsImage(null, "https://picsum.photos/id/1/400/300", null)),
+            NewsPost("Pelatihan Digital Marketing Pemuda", null, null, "2024-05-19", NewsImage(null, "https://picsum.photos/id/2/400/300", null)),
+            NewsPost("Inovasi Produk Olahan Singkong", null, null, "2024-05-18", NewsImage(null, "https://picsum.photos/id/3/400/300", null))
+        )
+        setNewsData(mockData)
+    }
+
+    private fun setNewsData(posts: List<NewsPost>) {
+        val adapter = NewsAdapter(posts)
+        binding.rvNews.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            this.adapter = adapter
         }
     }
 

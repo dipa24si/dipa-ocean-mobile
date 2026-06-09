@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundColor">
 
-    <!-- AppBar dengan Background Drawable Gradient -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
@@ -34,7 +33,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Search Area -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilSearch"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -55,7 +53,33 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Dashboard Menu Utama (GridLayout) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Berita Ekonomi Desa"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/latoblack"
+                android:textColor="@color/primaryColor"
+                android:textSize="18sp" />
+
+            <!-- Tinggi tetap 250dp agar pasti muncul dan bisa di-scroll horizontal -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNews"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_news" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="-150dp"
+                android:visibility="gone" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +97,6 @@
                 android:alignmentMode="alignMargins"
                 android:columnOrderPreserved="false">
 
-                <!-- Card Web Desa -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/btnWeb"
                     android:layout_width="0dp"
@@ -108,7 +131,6 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Card Katalog -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/btnKatalog"
                     android:layout_width="0dp"
@@ -145,7 +167,6 @@
 
             </GridLayout>
 
-            <!-- Bagian TabLayout & RecyclerView (Tugas Hari Ini) -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -182,7 +203,6 @@
 
             </com.google.android.material.tabs.TabLayout>
 
-            <!-- RecyclerView untuk menampilkan list UMKM -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUmkm"
                 android:layout_width="match_parent"
@@ -191,7 +211,6 @@
                 android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/item_umkm" />
 
-            <!-- Info Footer -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
