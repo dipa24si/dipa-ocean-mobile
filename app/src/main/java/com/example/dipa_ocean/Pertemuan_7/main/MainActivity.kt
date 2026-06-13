@@ -9,6 +9,7 @@ import com.example.dipa_ocean.Pertemuan_7.home.HomeFragment
 import com.example.dipa_ocean.Pertemuan_7.about.AboutFragment
 import com.example.dipa_ocean.Pertemuan_7.profile.ProfileFragment
 import com.example.dipa_ocean.Pertemuan_7.settings.SettingsFragment
+import com.example.dipa_ocean.Pertemuan_11.note.NoteFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +29,10 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.navigation_home -> {
                     loadFragment(HomeFragment())
+                    true
+                }
+                R.id.navigation_note -> {
+                    loadFragment(NoteFragment())
                     true
                 }
                 R.id.navigation_about -> {

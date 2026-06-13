@@ -8,11 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dipa_ocean.databinding.FragmentHomeBinding
 import com.example.dipa_ocean.Pertemuan_6.main.WebViewActivity
 import com.example.dipa_ocean.Pertemuan_11.news.*
+import com.example.dipa_ocean.Pertemuan_11.data.AppDatabase
+import com.example.dipa_ocean.Pertemuan_11.data.entity.UmkmEntity
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,22 +26,25 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val allUmkm = listOf(
-        Umkm(1, "Kripik Singkong Renyah", "Kuliner", 
-            "Kripik singkong asli desa dengan bumbu rempah pilihan.",
-            "https://picsum.photos/id/429/400/400"),
-        Umkm(2, "Anyaman Bambu Estetik", "Kerajinan", 
-            "Tas dan dekorasi rumah dari bambu berkualitas.",
-            "https://picsum.photos/id/102/400/400"),
-        Umkm(3, "Sambal Bawang Pedas", "Kuliner", 
-            "Sambal rumahan tanpa pengawet, pedasnya nampol!",
-            "https://picsum.photos/id/292/400/400"),
-        Umkm(4, "Gantungan Kunci Kayu", "Kerajinan", 
-            "Souvenir khas desa dari kayu mahoni ukir.",
-            "https://picsum.photos/id/1060/400/400"),
-        Umkm(5, "Kopi Arabika Desa", "Kuliner", 
-            "Biji kopi pilihan yang diproses secara tradisional.",
-            "https://picsum.photos/id/425/400/400")
+    private lateinit var db: AppDatabase
+    private val umkmList = mutableListOf<Umkm>()
+
+    private val initialUmkm = listOf(
+        UmkmEntity(name = "Kripik Singkong Renyah", category = "Kuliner", 
+            description = "Kripik singkong asli desa dengan bumbu rempah pilihan.",
+            imageUrl = "https://picsum.photos/id/429/400/400"),
+        UmkmEntity(name = "Anyaman Bambu Estetik", category = "Kerajinan", 
+            description = "Tas dan dekorasi rumah dari bambu berkualitas.",
+            imageUrl = "https://picsum.photos/id/102/400/400"),
+        UmkmEntity(name = "Sambal Bawang Pedas", category = "Kuliner", 
+            description = "Sambal rumahan tanpa pengawet, pedasnya nampol!",
+            imageUrl = "https://picsum.photos/id/292/400/400"),
+        UmkmEntity(name = "Gantungan Kunci Kayu", category = "Kerajinan", 
+            description = "Souvenir khas desa dari kayu mahoni ukir.",
+            imageUrl = "https://picsum.photos/id/1060/400/400"),
+        UmkmEntity(name = "Kopi Arabika Desa", category = "Kuliner", 
+            description = "Biji kopi pilihan yang diproses secara tradisional.",
+            imageUrl = "https://picsum.photos/id/425/400/400")
     )
 
     override fun onCreateView(
@@ -52,13 +59,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView(allUmkm)
+        db = AppDatabase.getInstance(requireContext())
+        
         setupTabLayout()
+        fetchUmkmData()
         
-        // Langsung tampilkan berita cadangan agar tidak kosong
         showFallbackNews()
-        
-        // Coba ambil dari internet
         getNews()
 
         binding.btnWeb.setOnClickListener {
@@ -68,6 +74,27 @@ class HomeFragment : Fragment() {
 
         binding.btnKatalog.setOnClickListener {
             Toast.makeText(requireContext(), "Membuka Katalog UMKM", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun fetchUmkmData(category: String? = null) {
+        lifecycleScope.launch {
+            var data = if (category == null || category == "Semua") {
+                db.umkmDao().getAll()
+            } else {
+                db.umkmDao().getByCategory(category)
+            }
+
+            if (data.isEmpty() && category == null) {
+                db.umkmDao().insertAll(initialUmkm)
+                data = db.umkmDao().getAll()
+            }
+
+            umkmList.clear()
+            umkmList.addAll(data.map { 
+                Umkm(it.id, it.name, it.category, it.description, it.imageUrl)
+            })
+            setupRecyclerView(umkmList)
         }
     }
 
@@ -122,12 +149,12 @@ class HomeFragment : Fragment() {
     private fun setupTabLayout() {
         binding.tabLayoutUmkm.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                val filteredList = when (tab?.position) {
-                    1 -> allUmkm.filter { it.category == "Kuliner" }
-                    2 -> allUmkm.filter { it.category == "Kerajinan" }
-                    else -> allUmkm
+                val category = when (tab?.position) {
+                    1 -> "Kuliner"
+                    2 -> "Kerajinan"
+                    else -> "Semua"
                 }
-                setupRecyclerView(filteredList)
+                fetchUmkmData(category)
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}

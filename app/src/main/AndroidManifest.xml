@@ -32,6 +32,7 @@
         <activity android:name=".Pertemuan_6.main.WebViewActivity" />
         <activity android:name=".Pertemuan_4.welcome.WelcomeActivity" />
         <activity android:name=".Pertemuan_11.onboarding.OnBoardingActivity" />
+        <activity android:name=".Pertemuan_11.note.NoteFormActivity" />
 
     </application>
 
