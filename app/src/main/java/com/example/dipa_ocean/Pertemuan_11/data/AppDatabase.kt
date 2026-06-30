@@ -11,7 +11,7 @@ import com.example.dipa_ocean.Pertemuan_11.data.entity.UmkmEntity
 
 @Database(
     entities = [NoteEntity::class, UmkmEntity::class],
-    version = 1
+    version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
 

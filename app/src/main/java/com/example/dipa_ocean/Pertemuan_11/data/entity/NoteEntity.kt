@@ -8,5 +8,6 @@ data class NoteEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
     val content: String,
-    val createdAt: Long
+    val createdAt: Long,
+    val reminderTimestamp: Long? = null
 )
