@@ -15,6 +15,7 @@ import com.example.dipa_ocean.Pertemuan_6.main.WebViewActivity
 import com.example.dipa_ocean.Pertemuan_11.news.*
 import com.example.dipa_ocean.Pertemuan_11.data.AppDatabase
 import com.example.dipa_ocean.Pertemuan_11.data.entity.UmkmEntity
+import com.example.dipa_ocean.Pertemuan_7.home.pertemuan_13.ThirteenthActivity
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -74,6 +75,11 @@ class HomeFragment : Fragment() {
 
         binding.btnKatalog.setOnClickListener {
             Toast.makeText(requireContext(), "Membuka Katalog UMKM", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.btnPertemuan13.setOnClickListener {
+            val intent = Intent(requireContext(), ThirteenthActivity::class.java)
+            startActivity(intent)
         }
     }
 
